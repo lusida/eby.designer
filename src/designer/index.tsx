@@ -1,6 +1,11 @@
 import React from "react";
 
-const Designer: React.FC = () => {
+interface Props {
+    schema?: ILCSchema;
+}
+const Designer: React.FC<Props> = (props) => {
+
+    console.log(props.schema);
 
     return (
         <div></div>

@@ -1,1 +1,1 @@
-export { default as Dbdraw } from './dbdraw';
+export { default as Dbdraw } from './dbd';

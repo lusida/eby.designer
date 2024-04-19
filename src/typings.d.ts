@@ -12,6 +12,7 @@ declare global {
         setSelected(schema: ISchema);
         setSelectedById(id: string);
 
+        getSetter(id: string): IPropSetter;
         getWidgetFactory(): IWidgetFactory;
     }
 
@@ -71,6 +72,20 @@ declare global {
     /**根节点元数据定义 */
     interface ILCSchema extends ISchema {
         type: string;
+    }
+
+    /**属性渲染上下文 */
+    interface IPropContext {
+        context: IEbyContext;
+        value: any;
+        props: Record<string, any>;
+    }
+
+    /**属性渲染器 */
+    interface IPropSetter {
+        id: string;
+        custom: boolean;
+        render(ctx: IPropContext): ReactNode;
     }
 }
 
