@@ -11,14 +11,14 @@ const DbTable: IWidget = {
     props: {
         name: {
             type: "string",
-            default: "table",
-            label: "dbd.widget.table.name.label",
-            description: "dbd.widget.table.name.desc"
+            default: "database",
+            label: "eby.property.name",
+            description: "eby.property.name.desc"
         },
         description: {
             type: "string",
-            label: "dbd.widget.table.desc.label",
-            description: "dbd.widget.table.desc.desc"
+            label: "eby.property.description",
+            description: "eby.property.description.desc"
         }
     },
     render(): ReactNode {

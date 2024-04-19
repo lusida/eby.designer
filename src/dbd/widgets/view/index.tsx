@@ -11,14 +11,14 @@ const DbView: IWidget = {
     props: {
         name: {
             type: "string",
-            default: "view",
-            label: "dbd.widget.view.name.label",
-            description: "dbd.widget.view.name.desc"
+            default: "database",
+            label: "eby.property.name",
+            description: "eby.property.name.desc"
         },
         description: {
             type: "string",
-            label: "dbd.widget.view.desc.label",
-            description: "dbd.widget.view.desc.desc"
+            label: "eby.property.description",
+            description: "eby.property.description.desc"
         }
     },
     render(): ReactNode {
