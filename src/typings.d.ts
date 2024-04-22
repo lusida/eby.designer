@@ -1,6 +1,42 @@
 import { ReactNode } from "react";
 
 declare global {
+    interface IServiceProvider {
+        /**
+         * 获取服务
+         * @param type 服务类型
+         */
+        getService<T>(type: string): T | undefined;
+        /**
+         * 获取服务列表
+         * @param type 服务类型或条件，如果不传则区全部服务
+         */
+        getServices<T>(type?: string | ((t: T) => boolean)): T[];
+    }
+    /**对象容器接口 */
+    interface IContainer extends IServiceProvider {
+        /**
+         * 获取或创建子容器
+         * @param name 子容器名称
+         */
+        scope(name: string): IContainer;
+        /**
+         * 注册服务
+         * @param type 服务类型
+         * @param service 服务实例
+         */
+        register<T>(type: string, service: T | TServiceHandler): void;
+
+        /**
+         * 反注册服务
+         * @param type 服务类型
+         * @param service 服务实例，如果传入则指定移除
+         */
+        unregister(type: string, service?: any): boolean;
+    }
+
+    type TServiceHandler = (container: IContainer) => any;
+
     /**设计器上下文 */
     interface IEbyContext {
         version: number;
@@ -18,6 +54,7 @@ declare global {
 
     /**物料工厂 */
     interface IWidgetFactory {
+        type: string;
         getWidget(id: string): IWidget;
         getSchema(id: string): ISchema;
     }

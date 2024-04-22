@@ -3,6 +3,7 @@ import LogicFlow, { EdgeConfig, GraphConfigData, NodeConfig } from "@logicflow/c
 import { Menu, Snapshot } from '@logicflow/extension';
 import ToolBar from "./toolbar";
 import { groupBy } from "lodash";
+import table from "./nodes/table";
 
 function parseSchema(node: NodeConfig): ISchema | undefined {
     if (node.schema) {
@@ -133,6 +134,8 @@ export function initLogicFlow(
         container: container,
         grid: true,
     });
+
+    lf.register(table);
 
     lf.adapterIn = adapterIn;
     lf.adapterOut = adapterOut;
